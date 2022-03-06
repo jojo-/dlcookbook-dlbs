@@ -17,9 +17,9 @@ Deep Learning Benchmarking Suite was tested on various servers with Ubuntu / Red
 1. Install Docker and NVIDIA Docker for containerized benchmarks. Read [here](https://hewlettpackard.github.io/dlcookbook-dlbs/#/docker/docker?id=docker) why we prefer to use docker and [here](https://hewlettpackard.github.io/dlcookbook-dlbs/#/docker/install_docker?id=installing-docker) for installing/troubleshooting tips. This is not required. DLBS can work with bare metal framework installations.
 2. Clone Deep Learning Benchmarking Suite from [GitHub](https://github.com/HewlettPackard/dlcookbook-dlbs)
    ```bash
-   git clone https://github.com/HewlettPackard/dlcookbook-dlbs dlbs
+   git clone https://github.com/jojo-/dlcookbook-dlbs dlbs
    ```
-3. The benchmarking suite mostly uses modules from standard python library (python 3.6). Optional dependencies that do not influence the benchmarking process are listed in `python/requirements.txt`. If they are not found, the code that uses it will be disabled.
+3. The benchmarking suite mostly uses modules from standard Python library (python 3.8). Optional dependencies that do not influence the benchmarking process include `pandas` and `matplotlib`. If they are not found, the code that uses it will be disabled.
 4. Build/pull docker images for containerized benchmarks or build/install host frameworks for bare metal benchmarks.
     1. [TensorFlow](http://tensorflow.org)
     2. [BVLC Caffe](http://caffe.berkeleyvision.org/)
@@ -44,7 +44,7 @@ python ./python/dlbs/experimenter.py help --frameworks                   # List 
 docker pull nvcr.io/nvidia/tensorflow:18.07-py3                          # Pull TensorFlow docker image from NGC
 
 python $experimenter run\                                                # Benchmark ...
-       -Pexp.framework='"nvtfcnn"'\                                      #     TensorFlow framework
+       -Pexp.framework='"tensorflow"'\                                      #     TensorFlow framework
        -Vexp.model='["resnet50", "alexnet_owt"]'\                        #     with ResNet50 and AlexNetOWT models
        -Vexp.gpus='["0", "0,1", "0,1,2,3"]'\                             #     run on 1, 2 and 4 GPUs
        -Pexp.dtype='"float16"'                                           #     use mixed-precision training
