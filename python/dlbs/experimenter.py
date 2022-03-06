@@ -291,12 +291,12 @@ class Experimenter(object):
                 validator.validate()
                 if not validator.plan_ok:
                     validator.report()
-                    logging.warn("---------------------------------------------------------------------------")
-                    logging.warn("-   Benchmark plan has not been validated. See reason (s) above.          -")
-                    logging.warn("-   If you believe validator is wrong (what can very well be the case),   -")
-                    logging.warn("-   rerun experimenter with `--no-validation` flag e.g.:                  -")
-                    logging.warn("-   python ./python/dlbs/experimenter.py run --no-validation ...          -")
-                    logging.warn("---------------------------------------------------------------------------")
+                    logging.warning("---------------------------------------------------------------------------")
+                    logging.warning("-   Benchmark plan has not been validated. See reason (s) above.          -")
+                    logging.warning("-   If you believe validator is wrong (what can very well be the case),   -")
+                    logging.warning("-   rerun experimenter with `--no-validation` flag e.g.:                  -")
+                    logging.warning("-   python ./python/dlbs/experimenter.py run --no-validation ...          -")
+                    logging.warning("---------------------------------------------------------------------------")
                 else:
                     logging.info("Benchmark plan has been validated")
             if not self.validation or validator.plan_ok:
