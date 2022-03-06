@@ -5,7 +5,7 @@ Deep Learning Benchmarking Suite (DLBS) is a collection of command line tools fo
 3. Supports inference and training phases.
 4. Supports synthetic and real data.
 5. Supports bare metal and docker environments.
-6. Supports single/half/int8 precision and uses tensor cores with Volta GPUs.
+6. Supports single/half/int8 precision and uses tensor cores with Volta/Turing/Ampere GPUs.
 7. Is based on modular architecture enabling easy integration with other projects
    such Google's TF CNN Benchmarks and Tensor2Tensor or NVIDIA's NVCNN, NVCNN-HVD or similar.
 8. Supports `raw performance` metric (number of data samples per second like images/sec).
@@ -19,7 +19,7 @@ Deep Learning Benchmarking Suite was tested on various servers with Ubuntu / Red
    ```bash
    git clone https://github.com/HewlettPackard/dlcookbook-dlbs dlbs
    ```
-3. The benchmarking suite mostly uses modules from standard python library (python 2.7). Optional dependencies that do not influence the benchmarking process are listed in `python/requirements.txt`. If they are not found, the code that uses it will be disabled.
+3. The benchmarking suite mostly uses modules from standard python library (python 3.6). Optional dependencies that do not influence the benchmarking process are listed in `python/requirements.txt`. If they are not found, the code that uses it will be disabled.
 4. Build/pull docker images for containerized benchmarks or build/install host frameworks for bare metal benchmarks.
     1. [TensorFlow](http://tensorflow.org)
     2. [BVLC Caffe](http://caffe.berkeleyvision.org/)
