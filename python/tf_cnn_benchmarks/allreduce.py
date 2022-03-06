@@ -22,7 +22,8 @@ import re
 from six.moves import xrange  # pylint: disable=redefined-builtin
 import tensorflow as tf
 
-from tensorflow.contrib import nccl
+#from tensorflow.contrib import nccl
+from tensorflow.python.ops import nccl_ops as nccl
 from tensorflow.contrib.all_reduce.python import all_reduce
 
 AllReduceSpecTuple = pycoll.namedtuple('AllReduceSpecTuple', 'alg shards limit')

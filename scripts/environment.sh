@@ -21,7 +21,7 @@ export plotter="$DLBS_ROOT/python/dlbs/reports/series_builder.py"
 command -v date > /dev/null 2>&1 && export HAVE_DATE=true || export HAVE_DATE=false
 command -v docker > /dev/null 2>&1 && export HAVE_DOCKER=true || export HAVE_DOCKER=false
 command -v nvidia-docker > /dev/null 2>&1 && export HAVE_NVIDIA_DOCKER=true || export HAVE_NVIDIA_DOCKER=false
-command -v python > /dev/null 2>&1 && export HAVE_PYTHON=true || export HAVE_PYTHON=false
+command -v python3 > /dev/null 2>&1 && export HAVE_PYTHON=true || export HAVE_PYTHON=false
 command -v awk > /dev/null 2>&1 && export HAVE_AWK=true || export HAVE_AWK=false
 command -v sed > /dev/null 2>&1 && export HAVE_SED=true || export HAVE_SED=false
 

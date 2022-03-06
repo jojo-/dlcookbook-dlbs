@@ -344,8 +344,8 @@ class DataPrefetcher(object):
         if self.next_data is None or self.next_data.is_cuda:
             return
         with torch.cuda.stream(self.stream):
-            self.next_data = self.next_data.cuda(async=True)
-            self.next_labels = self.next_labels.cuda(async=True)
+            self.next_data = self.next_data.cuda()
+            self.next_labels = self.next_labels.cuda()
             if self.fp16:
                 self.next_data = self.next_data.half()
             else:

@@ -528,6 +528,8 @@ class BenchData(object):
 
         def build_cache(self, inputs=None, output=None, output_cols=None):
             self.input_cols = [None] * len(inputs)
+            #print(inputs)
+            #print(output)
             for idx, param in enumerate(inputs):
                 self.input_cols[idx] = {"index": idx, "param": param, "width": 0,
                                         "title": DictUtils.get(BenchData.Reporter.TITLES, param, param),
@@ -549,9 +551,12 @@ class BenchData(object):
                             bench.get('exp.replica_batch', 'UNKNOWN'), bench.get('exp.dtype', 'UNKNOWN'),
                             bench.get('exp.num_gpus', -1)), file=sys.stderr)
                     continue
+                #print(bench)
                 # The 'bench_key' is the composite benchmark ID that includes values of input and output variable, for
                 # instance ['VGG16', 128, 2] may mean [ModelTitle, ReplicaBatch, NumGPUs].
                 bench_key = []
+                #print(self.input_cols)
+                #print(self.output_param)
                 # Build initial version of the key taking into account input parameters.
                 for input_col in self.input_cols:
                     # The param_value is the value of an output parameter, for instance, number of GPUs
@@ -560,10 +565,12 @@ class BenchData(object):
                         bench_key = []
                         break
                     bench_key.append(str(param_value))
+                #print(bench_key)
                 if bench_key:
                     output_val = DictUtils.get(bench, self.output_param, None)
                     if output_val:
                         bench_key = '.'.join(bench_key + [str(output_val)])
+                        #print(bench_key)
                         if bench_key not in self.cache:
                             self.cache[bench_key] = bench
                         else:
@@ -761,11 +768,11 @@ class BenchDataApp(object):
             'inputs': ['exp.model_title', 'exp.device_type'], 'output': 'exp.replica_batch'
         },
         'weak': {
-            'inputs': ['exp.model_title', 'exp.replica_batch'], 'output': 'exp.num_gpus',
+            'inputs': ['exp.framework', 'exp.phase', 'exp.model_title', 'exp.replica_batch', 'exp.dtype'], 'output': 'exp.num_gpus',
             'report_speedup': True, 'report_efficiency': True
         },
         'strong': {
-            'inputs': ['exp.model_title', 'exp.effective_batch'], 'output': 'exp.num_gpus',
+            'inputs': ['exp.framework', 'exp.phase', 'exp.model_title', 'exp.effective_batch', 'exp.dtype'], 'output': 'exp.num_gpus',
             'report_speedup': True, 'report_efficiency': True
         }
     }
